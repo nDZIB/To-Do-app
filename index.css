@@ -1,0 +1,42 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    background-color: #fff;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+.container {
+    justify-content: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.content {
+    background-color: gainsboro;
+    min-height: 400px;
+    width: 500px;
+    border-radius: 12px;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type ="text"] {
+    font-size: medium;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px;
+
+}
