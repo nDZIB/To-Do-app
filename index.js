@@ -1,31 +1,33 @@
 const taskInput = document.getElementById('taskInput');
-const addBuutton = document.getElementById('addTask');
+const addButton = document.getElementById('addTask');
 const taskList = document.getElementById('taskList');
+const form = document.getElementById('taskForm');
+
 
 loadTasks();
 
-// function addTask() {
+function addTask(event) {
+    event.preventDefault()
 
-//     const task = taskInput.value.trim();
+    const task = taskInput.value.trim();
 
-//     if (task) {
+    if (task) {
 
-//         createTaskElement(task);
+        createTaskElement(task);
 
-//         taskInput.value = '';
+        taskInput.value = '';
 
-//          saveTasks();
+         saveTasks();
 
-//     } else {
+    } else {
 
-//         alert('please enter a task!');
+        alert('please enter a task!');
 
-//     }
+    }
 
-// }
+}
 
-addBtn.addEventListener('click', addTask);
-
+form.addEventListener('submit', addTask)
 
 function createTaskElement(task) {
 
@@ -53,7 +55,7 @@ function createTaskElement(task) {
 function saveTasks() {
     let tasks = [];
     taskList.querySelectorAll('li').forEach(function(item) {
-        tasks.push(item.textContent.replace('delete', '').trim());
+        tasks.push(item.textContent.replace('Delete', '').trim());
     });
 
         localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -61,7 +63,13 @@ function saveTasks() {
 
     function loadTasks() {
 
-        const tasks = JSON.parse(localStorage.getItem('task')) || [];
-        tasks.foreach(createTaskElement);
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        console.log(tasks);
+        
+        tasks.forEach(createTaskElement);
+    }
+
+    function deleteTask() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     }
 
