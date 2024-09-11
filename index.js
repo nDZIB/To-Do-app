@@ -57,7 +57,7 @@ function saveTasks() {
         tasks.push(item.textContent.replace('Delete', '').trim());
     });
 
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        localStorage.setItem('tasks', JSON.stringify('tasks'));
 }
 
     function loadTasks() {
