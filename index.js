@@ -3,7 +3,6 @@ const addButton = document.getElementById('addTask');
 const taskList = document.getElementById('taskList');
 const form = document.getElementById('taskForm');
 
-
 loadTasks();
 
 function addTask(event) {
