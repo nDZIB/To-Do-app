@@ -12,7 +12,7 @@ body {
 
 .container {
     width: 200px;
-    height: 400px;
+    min-height: 400px; /* Use min height so that as the number of todo items increase, the container grows to contain them all */
     min-width: 30%;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -62,16 +62,22 @@ body {
 }
 
 #taskList {
-    height: 50px;
+    min-height: 50px; /* Use min height so that as the number of todo items increase, the container grows to contain them all */
     justify-content: space-between;
     padding: 5px 10px;
-    background-color: ghostwhite;
+    /* background-color: ghostwhite; */
     border-radius: 5px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     margin-bottom: 8px;
     border: 1px;
     cursor: pointer;
+
+    /* #additional: Read about each of the properties on mdn, to better understand how they operate */
+    flex-direction: column;
+    list-style-position: inside;
+    list-style-type: none;
+    gap: 12px;
 }
 
 
@@ -90,3 +96,18 @@ h1 {
     font-size: small;
 }
 
+.todo-item { /*Styles for a single todo item*/
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+}
+
+.todo-item:hover { /*Hover effect on a todo item*/
+    background-color: white;
+}
+
+.todo-text {
+    flex: 1;
+}

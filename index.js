@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
         e.preventDefault();
 
         const taskText = taskInput.value.trim();
-        if (tasktext !== ''){
+        if (taskText !== ''){
             addTask(taskText);
-            input.value = '';
+            taskInput.value = '';
             saveTask(taskText);
 
         }
@@ -20,17 +20,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     function addTask(taskText){
         const li = document.createElement('li');
-        li.textContent = taskText;
+        li.classList.add('todo-item')
+        const todoSpan = document.createElement('span')
+        todoSpan.classList.add('todo-text')
+        todoSpan.textContent = taskText;
 
         const deleteButton = document.createElement('button');
+        deleteButton.classList.add('deleteTask')
         deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', ()=>{
             li.remove();
             deleteTask(taskText); //deleting the task//
     });
 
+    const list = document.querySelector('#taskList')
+    li.appendChild(todoSpan)
     li.appendChild(deleteButton);
-    list.appendChild(list);
+    list.appendChild(li);
 }
 
     function loadTask() {
@@ -42,15 +48,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
     function saveTask(taskText) {
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks.push(taskText);
-        localStorage.setItem('tasks', JSON.stringify('tasks'));
+        localStorage.setItem('tasks', JSON.stringify(tasks)); /* YOu were not saving the tasks. Callin
+        g JSON.stringify('tasks') will instead put the string value 'tasks' in localstorage, rather then the array called tasks */
+
 
 
     }
 
-    function deleteTask(tasktext) {
+    function deleteTask(taskText) {
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks = tasks.filter(task => task !== taskText);
-        localStorage.setItem('tasks', JSON.stringify('tasks'));
+        localStorage.setItem('tasks', JSON.stringify(tasks)); /* YOu were not saving the tasks. Callin
+        g JSON.stringify('tasks') will instead put the string value 'tasks' in localstorage, rather then the array called tasks */
 
     }
         
